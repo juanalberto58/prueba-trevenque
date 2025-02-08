@@ -1,6 +1,6 @@
 # Proyecto de Gestión de Productos
 
-Este es un proyecto de gestión de productos que incluye funcionalidades como la creación, edición, eliminación y visualización de productos. Además, incorpora optimizaciones para consultas y rendimiento.
+Este es un proyecto de gestión de productos que incluye funcionalidades como la creación, edición, eliminación y visualización de productos.
 
 ## **Instrucciones para levantar el proyecto**
 
