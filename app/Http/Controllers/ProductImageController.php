@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ProductImage;
+use App\Models\Product;
 
 class ProductImageController extends Controller
 {
@@ -19,7 +21,14 @@ class ProductImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'url' => 'required|string|max:255'
+        ]);
+
+        $product = Product::findOrFail($id);
+        $image = $product->images()->create(['url' => $request->url]);
+
+        return response()->json($image, 201);
     }
 
     /**
@@ -43,6 +52,9 @@ class ProductImageController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $image = ProductImage::where('product_id', $id)->findOrFail($image_id);
+        $image->delete();
+
+        return response()->json(null, 204);
     }
 }
