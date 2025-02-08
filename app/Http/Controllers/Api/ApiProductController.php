@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 
-class ProductController extends Controller
+class ApiProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -80,4 +81,5 @@ class ProductController extends Controller
         Product::findOrFail($id)->delete();
         return response()->json(null, 204);
     }
+    
 }
