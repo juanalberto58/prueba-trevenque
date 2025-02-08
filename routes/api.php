@@ -8,3 +8,4 @@ Route::apiResource('categories', ApiCategoryController::class);
 Route::apiResource('products', ApiProductController::class);
 Route::post('products/{id}/images', [ApiProductImageController::class, 'store']);
 Route::delete('products/{id}/images/{image_id}', [ApiProductImageController::class, 'destroy']);
+Route::put('/products/{id}', [ApiProductController::class, 'updateProductStatus']);

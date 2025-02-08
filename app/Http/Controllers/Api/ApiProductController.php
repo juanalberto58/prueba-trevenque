@@ -81,5 +81,16 @@ class ApiProductController extends Controller
         Product::findOrFail($id)->delete();
         return response()->json(null, 204);
     }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $product = Product::find($id);
+        if ($product) {
+            $product->active = $request->input('active');
+            $product->save();
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false], 400);
+    }
     
 }
