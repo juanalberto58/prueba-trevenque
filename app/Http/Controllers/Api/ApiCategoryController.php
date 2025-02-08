@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Validation\ValidationException;
 
-class CategoryController extends Controller
+
+class ApiCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
