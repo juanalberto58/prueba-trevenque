@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductViewController extends Controller
 {
@@ -13,8 +14,14 @@ class ProductViewController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->paginate(10);
-        $categories = Category::all();
+        $categories = Cache::remember('categories', 60, function () {
+            return Category::all();
+        });
+    
+        $products = Cache::remember('products_page_' . request('page', 1), 60, function () {
+            return Product::with('category')->paginate(10);
+        });
+    
         return view('index', compact('products', 'categories'));
     }
 
